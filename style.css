@@ -54,6 +54,10 @@ body {
   justify-content: space-between;
 }
 
+.button-group {
+  display: flex;
+}
+
 button {
   font-size: 1.2rem;
   height: 2.5rem;
@@ -78,6 +82,7 @@ button:active {
 
 .twitter-button {
   font-size: 1.5rem;
+  margin-right: 20px;
 }
 
 .twitter-button:hover {

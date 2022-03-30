@@ -5,6 +5,7 @@ const twitterBtn = document.getElementById("twitter");
 const newQuoteBtn = document.getElementById("new-quote");
 const loader = document.getElementById("loader");
 const errorNotification = document.getElementById("errorNotification");
+const downloadQuoteBtn = document.getElementById("download-quote");
 
 let apiQuotes = [];
 
@@ -63,6 +64,18 @@ function tweetQuote() {
   const twitterUrl = `https://twitter.com/intent/tweet?text=${quoteText.innerText} - ${authorText.innerText}`;
   window.open(twitterUrl, "_blank");
 }
+
+// Download Quote
+downloadQuoteBtn.addEventListener("click", () => {
+  const buttonContainer = document.querySelector(".button-container");
+  quoteContainer.removeChild(buttonContainer);
+  html2canvas(document.body).then(function (canvas) {
+    canvas.toBlob(function (blob) {
+      saveAs(blob, "quotes.png");
+    });
+  });
+  quoteContainer.appendChild(buttonContainer);
+});
 
 // Event Listeners
 newQuoteBtn.addEventListener("click", newQuote);
