@@ -4,6 +4,7 @@ const authorText = document.getElementById("author");
 const twitterBtn = document.getElementById("twitter");
 const newQuoteBtn = document.getElementById("new-quote");
 const loader = document.getElementById("loader");
+const errorNotification = document.getElementById("errorNotification");
 
 let apiQuotes = [];
 
@@ -49,8 +50,10 @@ async function getQuotes() {
     newQuote();
   } catch (err) {
     apiQuotes = localQuotes;
-    console.log(localQuotes);
-    console.log(err);
+    errorNotification.hidden = false;
+    setTimeout(() => {
+      errorNotification.hidden = true;
+    }, 3000);
     newQuote();
   }
 }
